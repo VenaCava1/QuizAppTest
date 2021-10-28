@@ -22,12 +22,12 @@
 
     <div class='col-lg-6'style="border:2px solid black;padding:80px;border-radius:20px;background-color: #d8cb11dc;">
         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold"
-            style="color:black;font-weight:bold">Login Details</div>
+            style="color:black;font-weight:bold" align="center">Login Details</div>
         <br>
         <form class="row g-4" method="POST" action="/login/">{% csrf_token %}
             <div class="col-md-12">
-                <label for="inputname" class="form-label" style="font-weight: bold;"><i>
-                        Username</i></label>
+                <label for="inputname" class="form-label" style="font-weight: bold;">
+                        Username</label>
                 <input type="text" placeholder="Enter Username" style="text-align: center;"
                     class="form-control" id="username" name="username" required>
             </div>
