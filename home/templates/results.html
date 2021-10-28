@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 {% block title %} Results {% endblock %}
+{% block css %}
+<style>
+body
+{
+    counter-reset: Serial;           /* Set the Serial counter to 0 */
+}
 
+table
+{
+    border-collapse: separate;
+}
+
+tr td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
+</style>
+{% endblock %}
 {% block body %}
 <div class="container mt-4">
       <br>
       <table id="resultable" class="table">
         <thead>
           <tr>
+            <th>Sr. No</th>
             <th onclick="sortTable(0)">User</th>
             <th onclick="sortTable(1)">Quiz</th>
             <th onclick="sortTable(2)">Score</th>
@@ -15,6 +34,7 @@
         </thead>
 {% for mark in marks %}
 <tr>
+  <td></td>    
   <td>{{mark.user|title}}</td>
   <td>{{mark.quiz}}</td>
   <td>{{mark.score}}</td>
@@ -78,7 +98,12 @@ function sortTable(n) {
     }
   }
 }
+var addSerialNumber = function () {
+    $('table tr').each(function(index) {
+        $(this).find('td:nth-child(1)').html(index+1);
+    });
+};
+
+addSerialNumber();
 </script>
-
-
 {% endblock %}
